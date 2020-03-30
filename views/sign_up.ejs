@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- title %> </title>
+</head>
+<body>
+    <h1>Sign up</h1>
+    <form action="/register" method="POST" id="registration_form">
+        <div>
+            <label for="name">Name: </label>
+            <input type="text" name="name" placeholder="Your Name" id="name" required>
+        </div>
+        <div>
+            <label for="email">Email: </label>
+            <input type="email" name="email" placeholder="Your Email" id="email" required>
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="password" name="password" placeholder="Password" id="password" required>
+        </div>
+        <% if (showCaptcha) { %>
+            <div>
+                <%- recaptcha %>
+            </div>
+        <% } %>
+        <div>
+            <input type="submit" value="Sign Up">
+        </div>
+    </form> 
+    <% if (success) { %>
+        <div><%- success %></div>
+    <% } else if(passwordErr) { %>
+        <div><%- passwordErr %></div>
+    <% } else if(dbError) { %>
+        <div><%- dbError %></div>
+    <% } else if(captchaError) { %>
+        <div><%- captchaError %></div>
+    <% } %> 
+</body>
+</html>
